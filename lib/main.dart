@@ -60,16 +60,19 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
         ),
       ),
+      // Stack widget untuk membuat content berada di atas layer background
       body: Stack(
         children: [
+          // menambahkan background
           Container(
             decoration: BoxDecoration(
               image: DecorationImage(
-                image: AssetImage('assets/images/pet-background.jpg'),
+                image: AssetImage('assets/images/pet-background.jpg'), // define background's location
                 fit: BoxFit.cover,
               ),
             ),
           ),
+          // Untuk hold content position ketika orientasi berubah
           Center(
             child: Container(
               padding: EdgeInsets.all(16.0),
@@ -87,11 +90,13 @@ class _MyHomePageState extends State<MyHomePage> {
 
   Widget mainLayout() {
     return Column(
-      mainAxisSize: MainAxisSize.min,
+      mainAxisSize: MainAxisSize.min, // membuat widget column memiliki ketinggian minimal
       children: [
+        // untuk membuat box dengan tinggi 20
         SizedBox(
             height: 20,
-        ), // untuk membuat box dengan tinggi 20
+        ),
+        // menambahkan text dengan stylingnya
         Text(
           'Welcome to Pet Care',
           style: TextStyle(
@@ -100,6 +105,7 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
         ),
         SizedBox(height: 20),
+        /* Textfield digunakan untuk input text */
         TextField(
           decoration: InputDecoration(
             hintText: 'Enter your name',
@@ -185,7 +191,7 @@ class PetListScreen extends StatelessWidget {
       body: ListView.builder(
         itemCount: pets.length,
         itemBuilder: (context, index) {
-          /* Card dan ListTile widgets digunakan untuk membuat car for each pet
+          /* Card dan ListTile widgets digunakan untuk membuat kartu for each pet
           di dalam array.*/
           return Card(
             child: ListTile(
