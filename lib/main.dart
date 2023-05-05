@@ -46,6 +46,19 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
+        /* Merubah warna background Appbar dengan gradasi, menggunakan
+        flexibleSpace dan BoxDecoration */
+        flexibleSpace: Container(
+          decoration: BoxDecoration(
+              gradient: LinearGradient(
+                  begin: Alignment.topLeft,
+                  end: Alignment.bottomRight,
+                  colors: <Color>[
+                    Colors.grey,
+                    Colors.blue
+                  ])
+          ),
+        ),
       ),
       body: Stack(
         children: [
@@ -76,7 +89,9 @@ class _MyHomePageState extends State<MyHomePage> {
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
-        SizedBox(height: 20),
+        SizedBox(
+            height: 20,
+        ), // untuk membuat box dengan tinggi 20
         Text(
           'Welcome to Pet Care',
           style: TextStyle(
@@ -90,6 +105,7 @@ class _MyHomePageState extends State<MyHomePage> {
             hintText: 'Enter your name',
           ),
           onChanged: (value) {
+            // memberikan value untuk variabel nama sesuai dengan yang diinput
             setState(() {
               name = value;
             });
@@ -113,7 +129,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       );
                     },
                   );
-                } else { // jika berhasil akan menampilkan ke halaman Pet
+                } else { // jika berhasil akan diarahkan ke halaman Pet
                   Navigator.push(
                     context,
                     MaterialPageRoute(builder: (context) => PetListScreen()),
@@ -188,7 +204,8 @@ class PetListScreen extends StatelessWidget {
                 // menampilkan text dengan snackbar saat klik each ListTile
                 ScaffoldMessenger.of(context).showSnackBar( // method for display SnackBar
                   SnackBar(
-                    content: Text('Kamu memilih $pet_name !'),
+                    content: Text('Kamu memilih $pet_name !'), // text yang ditampilkan
+                    duration: Duration(milliseconds: 500), // durasi menampilkan text
                   ),
                 );
               },
